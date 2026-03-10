@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#">
+    <table align="center" border="1" cellspacing="0" >
+       <caption><h1>用户注册</h1></caption>
+
+
+        <tr>
+            <td>用户名</td>
+            <td> <input type="text" name="username" placeholder="请输入用户名" value="admin"></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="password" placeholder="请输入密码" ></td>
+        </tr>
+        <tr>
+            <td>确认密码</td>
+            <td><input type="password" name="password" placeholder="请再次输入密码" ></td>
+        </tr>
+        <tr>
+            <td>电子邮件</td>
+            <td><input type="text" name="password"  placeholder="请输入邮箱地址" ></td>
+        </tr>
+        <tr>
+            <td>手机号码</td>
+            <td><input type="text" name="phone" placeholder="请输入手机号码" ></td>
+        </tr>
+        <tr>
+            <td>性别</td>
+            <td>
+                <input type="radio" name="sex" value="男" checked>男
+                <input type="radio" name="sex" value="女">女
+            </td>
+        </tr>
+        <tr>
+            <td>是否有房</td>
+            <td><input type="radio" name="house" value="yes" checked>有
+            <input type="radio" name="house" value="no">没有</td>
+        </tr>
+        <tr>
+            <td>爱好</td>
+            <td>
+                <input type="checkbox" name="hobby" value="唱">唱
+            <input type="checkbox" name="hobby" value="跳">跳
+            <input type="checkbox" name="hobby" value="rap">rap
+            <input type="checkbox" name="hobby" value="篮球">篮球
+            </td>
+        </tr>
+        <tr>
+            <td>户籍</td>
+            <td>
+                <select name="city" id="city">
+                    <option value="">请选择城市</option>
+                    <option value="上海" >上海</option>
+                    <option value="北京" >北京</option>
+                    <option value="深圳" >深圳</option>
+                    <option value="广州" >广州</option>
+                    <option value="海外" >海外</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>课程</td>
+            <td>
+                <select name="subject" id="subject"  multiple>
+                    <option value="1">JavaEE</option>
+                    <option value="2">web前端</option>
+                    <option value="3">数据结构</option>
+                    <option value="4">C++</option>
+                    <option value="5">大数据</option>
+                    <option value="6">AL</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>头像</td>
+            <td><input type="file"></td>
+        </tr>
+        <tr>
+            <td>个人介绍</td>
+            <td><textarea name="msg" placeholder="请输入个人介绍" cols="50" ></textarea></td>
+        </tr>
+        <tr>
+            <td>验证码</td>
+            <td><input type="text" name="verification" placeholder="请输入验证码" >8888</td>
+        </tr>
+        <tr>
+            <td  align="center"
+                    colspan="2">
+                <input type="checkbox" name="agree" value="yes"></input>
+                是否阅读并同意用户协议</td>
+
+            </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="提交">
+                <input type="reset" value="重置"></input>
+
+            </td>
+        </tr>
+    </table>
+    </form>
+
+
+
+
+</body>
+</html>
