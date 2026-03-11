@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/day01-html/day01-html.iml" filepath="$PROJECT_DIR$/day01-html/day01-html.iml" />
       <module fileurl="file://$PROJECT_DIR$/day02-css/day02-css.iml" filepath="$PROJECT_DIR$/day02-css/day02-css.iml" />
+      <module fileurl="file://$PROJECT_DIR$/html-css/html-css.iml" filepath="$PROJECT_DIR$/html-css/html-css.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,9 @@
+div{
+    width: 100px;
+    height: 100px;
+    color: bisque;
+}
+body {
+    background: url('./bg.jpg');
+    background-size: 100%;
+}
