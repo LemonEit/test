@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>css样式测试</title>
-    <style>
+    <!--<style>
         #ts {
             color: green;
             /*添加蓝色边框 */
@@ -22,13 +22,45 @@
             margin: auto;
         }
     </style>
+    -->
 </head>
 <body>
-<div id="ts">
-    <p class="q">这是一段随机生成的测试文字，用于验证 CSS 样式效果。</p>
-    <p class="q">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.</p>
+<!--生成一个4行4列的表格-->
+</div>
+<div>
+    <table border="1" cellspacing="0" align="center">
+        <caption>运费详情</caption>
+        <tr style="background-color: antiquewhite">
+            <th>区域</th>
+            <th>寄达地</th>
+            <th>首重（元/1000g）</th>
+            <th>续重（元/1000g）</th>
+        </tr>
+        <tr>
+            <th rowspan="2" style="background-color: antiquewhite">一区</th>
+            <td>浙江、上海、江苏</td>
+            <td>6</td>
+            <td>1</td>
+        </tr>
+        <tr>
 
+            <td>江西、安徽</td>
+            <td>7</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <th style="background-color: antiquewhite">二区</th>
+            <td>吉林、黑龙江、云南</td>
+            <td>10</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <th style="background-color: antiquewhite">三区</th>
+            <td>新疆、西藏</td>
+            <td>15</td>
+            <td>10</td>
+        </tr>
+    </table>
 </div>
 <!--添加版权声明-->
 <p style="text-align: center;">Copyright © 2020. All rights reserved.</p>
