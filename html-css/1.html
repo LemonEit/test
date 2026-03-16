@@ -1,0 +1,282 @@
+
+
+function CustomizeiniObj()
+{
+//这里写入自定义代码的相关对象的初始化过程
+}
+function Search()
+{
+
+
+var where="查询;1=1";
+var btnSearch=document.getElementById("btnSearch");
+
+var obj=document.getElementById("txXM");
+if(obj.value!="")
+{
+where+=" and XM like '%{XM}%'";
+}
+var obj=document.getElementById("txYGBH");
+if(obj.value!="")
+{
+where+=" and YGBH like '%{YGBH}%'";
+}
+obj=document.getElementById("ddlSZGW");
+if(obj.value!="")
+{
+where+=" and SZGW = '{SZGW}'";
+}
+obj=document.getElementById("txSSBM");
+if(obj.value!="")
+{
+/*if(obj.value.length<3000)
+{
+GetSSBM(); //处理部门参数过长。数据库报错
+where+=" and (SSBM like '%"+$("#txTemp").val()+"%' or  CHARINDEX(SSBM,'"+$("#txTemp").val()+"')>0)";
+if($("#txSsbmWhere").val() != "" && $("#txTemp").val() == "")
+{
+where += " and ( "+$("#txSsbmWhere").val()+"  1 <> 1 )";
+}
+else if($("#txSsbmWhere").val() != "" && $("#txTemp").val() != "")
+{
+where += " or ( "+$("#txSsbmWhere").val()+"  1 <> 1 )";
+}
+
+}*/
+if(obj.value.length<3000)
+{
+where+=" and (SSBM like '%{SSBM}%' or charindex(','+SSBM+',',',{SSBM},')>0)";
+}
+
+}
+obj=document.getElementById("txJGBM");
+
+if(obj.value!="")
+{
+where+=" and (JGBM like '%{JGBM}%' or charindex(','+JGBM+',',',{JGBM},')>0)";
+
+}
+obj=document.getElementById("ddlSFDLZH");
+if(obj.value!="")
+{
+if(obj.value=="1")
+{
+where+=" and ISNULL(DLZH,'')<>''";
+}
+else
+{
+where+=" and ISNULL(DLZH,'')=''";
+}
+
+}
+
+obj=document.getElementById("txYGZTLSH");
+if(obj.value!="")
+{
+where+=" and CHARINDEX(','+YGZT+',',',{YGZT},')>0";
+}
+obj=document.getElementById("ddlZC");
+if(obj.value!="")
+{
+where+=" and ZCMCNAME = '{ZC}'";
+}
+btnSearch.toDataEx=where;
+$(btnSearch).click();
+
+}
+function SBJN()
+{
+var delBtn = parent.innerMain.document.getElementById('DeleteBtn');
+var guidStr = Page.getProperty(delBtn,'GUID');
+if(guidStr=='')
+{
+alert("请先选择要操作的记录！");
+return false;
+}
+var url="localizer.aspx?MasterTable=XT_YGDA$UseType=Modify$Formname=UpdateSB$xxguid="+guidStr;
+parent.innerMain.fnOpenModal(url,800,600);
+}
+function ZGZ()
+{
+var isdel=get1('sql_isdel2', {dqr:'陈诗林'});
+if(isdel=='0'&&'陈诗林'!='system')
+{
+alert("你没有权限进行此操作！");
+return false;
+}
+
+var delBtn = parent.innerMain.document.getElementById('DeleteBtn');
+var guidStr = Page.getProperty(delBtn,'GUID');
+if(guidStr=='')
+
+
+{
+alert("请先选择要操作的记录！");
+return false;
+}
+
+if(guidStr.indexOf(",")>-1)
+{
+alert("每次只能选择一条记录！");
+return false;
+}
+
+var url="localizer.aspx?MasterTable=XT_YGDA$UseType=Modify$Formname=UpdateYGZT$xxguid="+guidStr;
+parent.innerMain.fnOpenModal(url,800,600);
+}
+/*function GetSSBM()
+{
+$("#txSsbmWhere").val("");
+$("#txTemp").val("");
+
+var ssbm = $("#txSSBM").val();
+var data={type:"single",sql:"select count(1) from VXT_SysOrg where charindex(suporg ,'"+ssbm+"')>0 "};
+data=getRecordData(data);
+if(data != "0")
+{
+var array =new Array();
+array = ssbm.split(",");
+/*
+if(ssbm.indexOf(",") > -1)
+{
+array = ssbm.split(",");
+}
+
+GetOrg(array,ssbm);
+}
+else
+{
+$("#txTemp").val(ssbm);
+}
+}
+function GetOrg(array,ssbm)
+{
+var where = "";
+var isTrue = true;
+if(isTrue)
+{
+XHOrg(array,ssbm,where,isTrue);
+}
+
+}
+function XHOrg(array,ssbm,where,isTrue)
+{
+if(isTrue)
+{
+var data={type:"single",sql:"select count(1) from VXT_SysOrg where charindex(suporg ,'"+ssbm+"')>0 "};
+data=getRecordData(data);
+if(data != "0")
+{
+for(var i = 0 ; i < array.length ; i++)
+{
+var data={type:"single",sql:"select cast(STUFF((select ','+orgname  from VXT_SysOrg where suporg = '"+array[i]+"' and ison<>1  ORDER BY orderid for xml path('')),1,1,'') as varchar(max))"};
+data=getRecordData(data);
+if(data.length > 0)
+{
+where += " (SSBM in (select orgname from sys_org where suporg = '"+array[i]+"' OR orgname = '"+array[i]+"')) or ";
+$("#txTemp").val(ssbm.replace(data,''));
+$("#txTemp").val($("#txTemp").val().replace(array[i]+",",''));
+break;
+}
+}
+$("#txSsbmWhere").val(where);
+}
+else
+{
+isTrue = false;
+return;
+}
+var ssbm2 = $("#txTemp").val();
+var array2 =new Array();
+if(ssbm2.indexOf(",") > -1)
+{
+array2 = ssbm2.split(",");
+}
+XHOrg(array2,ssbm2,where,isTrue);
+}
+else
+{
+isTrue = false;
+return;
+}
+}*/
+function callDelete()
+{
+var isdel=get1('sql_isdel', {dqr:'陈诗林'});
+if(isdel=='0')
+{
+alert("你没有权限进行此操作！");
+return false;
+}
+
+var delBtn = parent.innerMain.document.getElementById('DeleteBtn');
+var guidStr = Page.getProperty(delBtn,'GUID');
+if(guidStr=='')
+{
+alert("请先选择要操作的记录！");
+return false;
+}
+
+
+/*	var strsql1="select count(0) zs from XT_LDHT where YGID in (select ID from XT_YGDA where charindex(','+guid+',', ',"+guidStr+",')>0)";
+var strsql2="select count(0) zs from XT_ZZGL_ZYZZ where YGID in (select ID from XT_YGDA where charindex(','+guid+',', ',"+guidStr+",')>0)";
+var strsql3="select count(0) zs from XT_ZZGL_HJJL where YGID in (select ID from XT_YGDA where charindex(','+guid+',', ',"+guidStr+",')>0)";
+var strsql4="select count(0) zs from XT_XZGL_NBPX_PXXX where RYID in (select ID from XT_YGDA where charindex(','+guid+',', ',"+guidStr+",')>0)";
+data1={type:"single",sql:strsql1};
+data2={type:"single",sql:strsql2};
+data3={type:"single",sql:strsql3};
+data4={type:"single",sql:strsql4};
+var Issjbg1=getRecordData(data1);
+var Issjbg2=getRecordData(data2);
+var Issjbg3=getRecordData(data3);
+var Issjbg4=getRecordData(data4); */
+var data=get1("sql_Isxgsj",{ygguid:guidStr});
+//if(parseInt(Issjbg1)>0||parseInt(Issjbg2)>0||Issjbg3==1){
+if(parseInt(data)>0){
+alert("该记录有相关信息，无法删除！");
+return false;
+}
+else
+{
+delBtn.click();
+}
+
+
+
+}
+
+function SYTB()
+{
+var qx=get1('sql_tsry_qx', {dqr:'陈诗林'});
+if(qx=='0' &&  '陈诗林' !='杨昀')
+{
+alert("你没有权限进行此操作！");
+return false;
+}
+var delBtn = parent.innerMain.document.getElementById('DeleteBtn');
+var guidStr = Page.getProperty(delBtn,'GUID');
+if(guidStr=='')
+{
+alert("请先选择要操作的记录！");
+return false;
+}
+if(guidStr.indexOf(",")>-1)
+{
+alert("每次只能选择一条记录！");
+return false;
+}
+var isAllSy = get1('sql_isAllSy',{guidStr:guidStr})
+if(isAllSy!=0)
+{
+alert("该人员非试用期人员！")
+return false;
+}
+if(confirm('确认将人员同步HCM？'))
+{
+
+get1('sql_tsry',{guidStr:guidStr},function(data){
+alert("同步成功！");
+})
+}
+}
+
